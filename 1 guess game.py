@@ -6,7 +6,7 @@ class Outputs():
         print("CONGRATS!!\nThe player has guessed correctly")
         
     def loser(self):
-        print("GAME OVER!!\nAll chances have been used up")
+        print("\nGAME OVER!!\nAll chances have been used up")
         
 
     def high(self):
@@ -24,7 +24,7 @@ def guess_user(x):
     g=0
     i=1
     while(i<=5):
-        print(f'chance number {i}')
+        print(f'\nchance number {i}')
         g=int(input(f'Guess a number (1-{x}) :'))
         if g not in range(1,x+1):
             print("Invalid Input")
@@ -34,20 +34,20 @@ def guess_user(x):
                 break
             elif g<n:
                 o.low()
-                i++
+                i+=1
             elif g>n:
                 o.high()
-                i++
-   if i==6:
+                i+=1
+    if i==6:
         o.loser()
         
     
 def guess_comp(x):
     low=1
     high=x
-    i=0
+    i=1
     while (i<=5):
-        print(f'chance number {i}')
+        print(f'\nchance number {i}')
         n=random.randint(low,high)
         print(f"the guess is {n}")
         l=['c','h','l']
@@ -58,11 +58,11 @@ def guess_comp(x):
         elif a==l[1]:
             o.high()
             high=n-1
-            i++
+            i+=1
         elif a==l[2]:
             o.low()
             low=n+1
-            i++
+            i+=1
     if i==6:
         o.loser()
         
@@ -84,6 +84,6 @@ def game():
         elif b=='s':
             guess_comp(a)
         c=input("\nDo u want to continue the game - yes(y) or no(n): ").lower() 
-    print("THANKS FOR PLAYING\nSEE YOU LATER")
+    print("\nTHANKS FOR PLAYING\nSEE YOU LATER")
        
 game()
