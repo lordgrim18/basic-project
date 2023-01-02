@@ -5,6 +5,9 @@ class Outputs():
     def winner(self):
         print("CONGRATS!!\nThe player has guessed correctly")
         
+    def loser(self):
+        print("GAME OVER!!\nAll chances have been used up")
+        
 
     def high(self):
         print("WRONG GUESS!! Too high")
@@ -19,7 +22,9 @@ o=Outputs()
 def guess_user(x):
     n=random.randint(1,x)
     g=0
-    while g!=n:
+    i=1
+    while(i<=5):
+        print(f'chance number {i}')
         g=int(input(f'Guess a number (1-{x}) :'))
         if g not in range(1,x+1):
             print("Invalid Input")
@@ -29,14 +34,20 @@ def guess_user(x):
                 break
             elif g<n:
                 o.low()
+                i++
             elif g>n:
                 o.high()
+                i++
+   if i==6:
+        o.loser()
         
     
 def guess_comp(x):
     low=1
     high=x
-    while True:
+    i=0
+    while (i<=5):
+        print(f'chance number {i}')
         n=random.randint(low,high)
         print(f"the guess is {n}")
         l=['c','h','l']
@@ -47,9 +58,14 @@ def guess_comp(x):
         elif a==l[1]:
             o.high()
             high=n-1
+            i++
         elif a==l[2]:
             o.low()
             low=n+1
+            i++
+    if i==6:
+        o.loser()
+        
 
 def select(x):
     a=input("who do u want the player(guesser) to be - user(U) or system(S): ").lower()
@@ -57,7 +73,7 @@ def select(x):
     
 
 def game():
-    print("\n","-"*5,"WELCOME TO THE GUESSING GAME","-"*5,"\n")
+    print("\n","-"*5,"WELCOME TO THE GUESSING GAME","-"*5,"\nThe player has 5 chances to guess\n")
     c='y'
     while c!='n':
         a=int(input("Enter the number range of the game: "))
