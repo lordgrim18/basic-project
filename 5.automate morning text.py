@@ -1,11 +1,10 @@
 # install libraries schedule, requests 
-
-
 from credentials import mobile_number
 import requests
 import schedule
 import time
 
+#sending part using textbelt api
 def send_message():
     resp = requests.post('https://textbelt.com/text', {
         'phone' : mobile_number,

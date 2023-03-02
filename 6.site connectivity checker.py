@@ -2,7 +2,7 @@
 
 import urllib.request as urllib
 
-
+#checking connectivity
 def main(url):
     print("Checking connectivity ")
     
@@ -13,4 +13,14 @@ def main(url):
 print("This is a site connectivity checker program")
 input_url = input("Input the url of the site you want to check: ")
 
-main(input_url)
+#main part
+while True:
+    choice = input("Do you want to check the site connectivity(Yes/No): ").lower()
+    if choice == "yes":
+        main(input_url)
+    elif choice == "no":
+        print("Thank you")
+        quit()
+    else:
+        print("Invalid input, please input Yes or No")
+

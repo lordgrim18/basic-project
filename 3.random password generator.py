@@ -1,30 +1,32 @@
 import string
 import random
 
-characters = list(string.ascii_letters + string.digits + " !@#$%^&*()")
+characters = list(string.ascii_letters + string.digits + "!@#$%^&*()")
 
+#generation part
 def generate_password():
     password_length = int(input("How long would you like your password to be? "))
     
     random.shuffle(characters)
     
-    password = []
+    password_list = []
     
     for x in range(password_length):
-        password.append(random.choice(characters))
+        password_list.append(random.choice(characters))
     
-    random.shuffle(password)
+    random.shuffle(password_list)
     
-    password = "" .join(password)
-    print(password)
+    password_string = "" .join(password_list)
+    print(password_string)
 
-option = input("Do you want to generate a password? (Yes/No): ")
+#calling part
+while True:
+    option = input("Do you want to generate a password? (Yes/No): ").lower()
 
-if option == "Yes":
-    generate_password()
-elif option == "No":
-    print("Program ended")
-    quit()
-else:
-    print("Invalid input, please input Yes or No")
-    quit()
+    if option == "yes":
+        generate_password()
+    elif option == "no":
+        print("Thank you")
+        quit()
+    else:
+        print("Invalid input, please input Yes or No")
